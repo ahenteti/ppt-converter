@@ -53,3 +53,5 @@ for ppt in *.pptx; do
   echo "convert $ppt to images..."
   java -jar "$scriptRepo/ppt-to-images/dist/standalone.jar" "$ppt"
 done
+
+node "$scriptRepo/text-to-speech/index.js" .
