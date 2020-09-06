@@ -1,6 +1,7 @@
 const gTTS = require('gtts'); 
 const fs = require('fs');
 const path = require('path');
+var say = require("say");
 
 if (process.argv.length <= 2) {
     console.log("Usage: " + __filename + " path/to/directory");
@@ -9,16 +10,15 @@ if (process.argv.length <= 2) {
  
 const dir = process.argv[2];
  
-fs.readdir(dir, function(error, files) {
-    if(error) { throw new Error(error); } 
+fs.readdir(dir, function(err, files) {
+    if(err) { throw new Error(err); } 
     files.filter(file => /\.txt$/.test(file)).forEach(toSpeech);
 });
 
 function toSpeech(file) {
     const fileContent = fs.readFileSync(file, "utf8")
-    const speechFileName = path.basename(file, '.txt') + '.mp3';
-    const gtts = new gTTS(fileContent, 'en'); 
-    gtts.save(speechFileName, function (error, result){ 
-        if(error) { throw new Error(error); } 
+    const speechFilename = path.basename(file, '.txt') + '.wav';
+    say.export(fileContent, 'Microsoft David Desktop', 1, speechFilename, function(err) {
+        if(err) { throw new Error(err); }
     });
 }

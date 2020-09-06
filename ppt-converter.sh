@@ -54,4 +54,5 @@ for ppt in *.pptx; do
   java -jar "$scriptRepo/ppt-to-images/dist/standalone.jar" "$ppt"
 done
 
+echo "convert notes to speech..."
 node "$scriptRepo/text-to-speech/index.js" .

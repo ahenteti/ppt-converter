@@ -10,6 +10,6 @@
   "author": "Ahmed HENTETI (https://ahenteti-blog.herokuapp.com)",
   "license": "MIT",
   "dependencies": {
-    "gtts": "^0.2.1"
+    "say": "^0.16.0"
   }
 }
